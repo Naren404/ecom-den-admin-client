@@ -8,6 +8,7 @@ import VerifyEmailPage from './pages/authPage/verifyEmailPage';
 import LoginPage from './pages/authPage/loginPage';
 import AdminPrivateRoutes from './components/privateRouter/adminPrivateRouter';
 import AdminLayout from './components/layouts/adminLayout';
+import CategoryPage from './pages/categoryPage/categoryPage';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
       {/* Private Routes */}
       <Route path='/admin' element={<AdminPrivateRoutes><AdminLayout /></AdminPrivateRoutes>}>
         <Route path="" element={<p>DashBoard</p>} />
-        <Route path="categories" element={<p>Category Page</p>} />
+        <Route path="categories" element={<CategoryPage />} />
         <Route path="products" element={<p>Products</p>} />
         <Route path="orders" element={<p>Orders</p>} />
         <Route path="users" element={<p>Users</p>} />
