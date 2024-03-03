@@ -23,6 +23,15 @@ export const verifyUser = (verificationData) => {
   })
 }
 
+// Login User
+export const loginUser = (loginData) => {
+  return axiosApiCall({
+    method: 'post',
+    url: `${USER_API_URL}/login`,
+    data: loginData
+  })
+}
+
 // PRIVATE ROUTES 
 
 // Get new access token suing refresh token
@@ -32,5 +41,14 @@ export const getNewAccessJwt = () => {
     url: `${USER_API_URL}/accessjwt`,
     isPrivate: true,
     useRefreshToken: true,
+  })
+}
+
+// GET USER
+export const getUser = () => {
+  return axiosApiCall({
+    method: 'get',
+    url: USER_API_URL,
+    isPrivate: true,
   })
 }
