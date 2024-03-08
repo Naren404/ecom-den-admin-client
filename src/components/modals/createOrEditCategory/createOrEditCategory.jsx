@@ -2,7 +2,7 @@
 import { useDispatch } from "react-redux";
 import CreateOrEditEntityModal from "../createOrEditEntityModal";
 import { categoryFormFields } from "./categoryFormFields";
-import { createCategoryAction } from "../../../entities/category/categoryActions";
+import { createCategoryAction, updateCategoryAction } from "../../../entities/category/categoryActions";
 
 const CreateOrEditCategoryModal = (props) => {
   const { showModal, setShowModal, formData, handleOnChange } = props
@@ -18,8 +18,11 @@ const CreateOrEditCategoryModal = (props) => {
     Object.entries(formData).forEach(([key, value]) => formObjectData.append(key,value))
 
     // this will dispatch either create category action
-     dispatch(createCategoryAction(formObjectData))
+     formData?._id ? dispatch(updateCategoryAction(formObjectData)) : dispatch(createCategoryAction(formObjectData))
     //  or update category action
+
+    // close modal;
+    setShowModal(false)
   }
 
   return ( 

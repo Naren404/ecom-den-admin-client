@@ -3,6 +3,9 @@ import CategoryCard from "../../components/categoryCard/categoryCard";
 import CreateOrEditCategoryModal from "../../components/modals/createOrEditCategory/createOrEditCategory";
 import useModal from "../../hooks/useModal";
 import useForm from "../../hooks/useForm";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCategoriesAction } from "../../entities/category/categoryActions";
 
 const initialFormData = {
   thumbnail: '',
@@ -17,6 +20,14 @@ const CategoryPage = () => {
     setFormData(initialFormData)
     setShowModal(true)
   }
+
+  const { categories }  = useSelector(state => state.category)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCategoriesAction())
+  }, [dispatch])
+
   return (
     <>
     <Container>
@@ -24,12 +35,7 @@ const CategoryPage = () => {
         <Col xs={9}>
           <Stack gap={4}>
               <Form.Control type="text" placeholder="Search by title..." />
-              
-              <CategoryCard />
-              <CategoryCard />
-              <CategoryCard />
-              <CategoryCard />
-              <CategoryCard />
+              {categories.map((category, index) => <CategoryCard key={index} category={category} setShowModal={setShowModal} setFormData={setFormData} />)}
           </Stack>
         </Col>
 

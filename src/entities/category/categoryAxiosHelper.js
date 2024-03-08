@@ -22,3 +22,22 @@ export const createCategory = (categoryObj) => {
     isPrivate: true,
   })
 }
+
+// UPDATE A CATEGORY
+export const updateCategory = (categoryObj) => {
+  return axiosApiCall({
+    method: 'patch',
+    url: CATEGORY_API_URL,
+    data: categoryObj,
+    isPrivate: true,
+  })
+}
+
+// DELETE A CATEGORY
+export const deleteCategory = (_id) => {
+  return axiosApiCall({
+    method: 'delete',
+    url: `${CATEGORY_API_URL}/${_id}`,
+    isPrivate: true,
+  })
+}

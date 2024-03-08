@@ -9,6 +9,7 @@ export const categoryFormFields = [
     label: "Category Title",
     name: "title",
     type: "text",
-    placeholder: 'Enter your Category Title'
+    placeholder: 'Enter your Category Title',
+    required: true,
   },
 ]
