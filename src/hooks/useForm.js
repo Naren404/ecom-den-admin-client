@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 const handleOnChange = (e, formData, setFormData) => {
-  const {name, value} = e.target
+  const {name, value, files, type} = e.target
 
   setFormData({
     ...formData,
     [name]: value,
+    image: type === "file" ? files?.[0] : formData.image,
   })
 }
 
