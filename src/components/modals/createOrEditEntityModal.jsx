@@ -1,9 +1,14 @@
 /* eslint-disable react/prop-types */
-import { Button, Form, Offcanvas, Stack } from "react-bootstrap";
+import { Button, Form, Offcanvas, Spinner, Stack } from "react-bootstrap";
 import CustomInput from "../customInput/customInput";
+import { useSelector } from "react-redux";
 
 const CreateOrEditEntityModal = (props) => {
   const { showModal, setShowModal, modalHeader, formFields, formData, handleOnChange, handleOnSubmit } = props
+
+  const { isCreating } = useSelector(state => state.promise)
+
+  const buttonText = formData?._id ? "Update" : "Create"
 
   return ( 
     <Offcanvas
@@ -31,7 +36,6 @@ const CreateOrEditEntityModal = (props) => {
                   type: field.type,
                   name: field.name,
                   value: formData[field.name],
-                  required: true,
                 }}
               />
             )}
@@ -42,8 +46,9 @@ const CreateOrEditEntityModal = (props) => {
               variant="outline-success" 
               className="w-100"
               type="submit"
+              disabled={isCreating}
             >
-              Create
+              { isCreating ? <Spinner animation="border" role="status" /> : buttonText }
             </Button>
 
             <Button 

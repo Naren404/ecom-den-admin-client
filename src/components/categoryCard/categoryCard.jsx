@@ -1,11 +1,26 @@
+/* eslint-disable react/prop-types */
 import { Button, Card, Image, Stack } from "react-bootstrap";
 import { BsPencil, BsTrash } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { deleteCategoryAction } from "../../entities/category/categoryActions";
 
-const CategoryCard = () => {
+const CategoryCard = (props) => {
+const { setShowModal, setFormData, category } = props
+  
+const openEditCatgeoryModal = () => {
+  setFormData({...category, thumbnail: ''})
+  setShowModal(true)
+}
+
+const dispatch = useDispatch()
+const handleOnDelete = () => {
+  dispatch(deleteCategoryAction(category?._id))
+}
+
   return ( 
     <Card className="d-flex flex-row align-items-center rounded shadow">
       <Image 
-        src="https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg" 
+        src={import.meta.env.VITE_APP_API_BASE_URL + category.thumbnail}
         width={80} 
         height={80}
         className="p-1"
@@ -14,11 +29,11 @@ const CategoryCard = () => {
       
       <Card.Body>
         <Stack direction="horizontal" gap={3} className="justify-content-between">
-          <Card.Title>HELLO</Card.Title>
+          <Card.Title>{category.title}</Card.Title>
           
           <Stack direction="horizontal" gap={2}>
-            <Button variant="outline-success"><BsPencil/></Button>
-            <Button variant="outline-danger"><BsTrash/></Button>
+            <Button variant="outline-success" onClick={openEditCatgeoryModal}><BsPencil/></Button>
+            <Button variant="outline-danger" onClick={handleOnDelete}><BsTrash/></Button>
           </Stack>
         </Stack>
       </Card.Body>
