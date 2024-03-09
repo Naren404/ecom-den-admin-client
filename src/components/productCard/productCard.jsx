@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 const ProductCard = (props) => {
   const { product, setShowModal, setModalPayload } = props
 
-  //OPEN MODAL
-  // const openCreateOrEditProductImageModal = () => {
-  //   setModalPayload(product)
-  //   setShowModal(true)
-  // }
+  // OPEN MODAL
+  const openManageProductImagesModal = () => {
+    setModalPayload(product?._id)
+    setShowModal(true)
+  }
 
   const dispatch = useDispatch()
 
@@ -50,7 +50,7 @@ const ProductCard = (props) => {
 
             <Button
               variant="outline-primary" 
-              // onClick={openCreateOrEditProductImageModal}
+              onClick={openManageProductImagesModal}
               >
                 <BsImages/>
             </Button>

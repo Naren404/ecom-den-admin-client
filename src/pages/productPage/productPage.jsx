@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { getProductsAction } from "../../entities/product/productActions";
 import ProductCard from "../../components/productCard/productCard";
 import { getCategoriesAction } from "../../entities/category/categoryActions";
+import useModal from "../../hooks/useModal";
+import ManageProductImagesModal from "../../components/modals/manageProductImagesModal/manageProductImagesModal";
 
 const ProductPage = () => {
   const { products } = useSelector(state => state.product)
@@ -15,6 +17,10 @@ const ProductPage = () => {
     dispatch(getProductsAction())
     dispatch(getCategoriesAction())
   }, [dispatch])
+
+  // MANAGE IMAGES MODAL
+  const {showModal, setShowModal, modalPayload, setModalPayload } = useModal()
+
   return ( 
     <>
     <Container>
@@ -27,8 +33,8 @@ const ProductPage = () => {
               <ProductCard 
                 key={index} 
                 product={product}
-                // setShowModal={setShowModal}
-                // setModalPayload={setModalPayload}
+                setShowModal={setShowModal}
+                setModalPayload={setModalPayload}
               />)}
           </Stack>
         </Col>
@@ -48,7 +54,7 @@ const ProductPage = () => {
     </Container>
 
     {/* Modal To Manage Product Images */}
-    {/* {showModal && <CreateOrEditProductImageModal showModal={showModal} setShowModal={setShowModal} modalPayload={modalPayload} />} */}
+    {showModal && <ManageProductImagesModal showModal={showModal} setShowModal={setShowModal} modalPayload={modalPayload} />}
   </>
    );
 }
