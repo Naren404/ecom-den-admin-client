@@ -31,6 +31,8 @@ const ProductForm = (props) => {
     navigate("/admin/products")
   }
 
+  const buttonText = formData?._id ? "Update" : "Create"
+
   return ( 
     <Container className="p-4 shadow-lg rounded d-flex justify-content-center">
       <Form onSubmit={(e) => handleOnSubmit(e)}>
@@ -66,7 +68,7 @@ const ProductForm = (props) => {
             type="submit"
             disabled={isCreating}
           >
-            { isCreating ? <Spinner animation="border" role="status" /> : "Create" }
+            { isCreating ? <Spinner animation="border" role="status" /> : buttonText }
           </Button>
 
           <Link to="/admin/products" className="w-100">
