@@ -11,6 +11,7 @@ import AdminLayout from './components/layouts/adminLayout';
 import CategoryPage from './pages/categoryPage/categoryPage';
 import ProductPage from './pages/productPage/productPage';
 import NewProductPage from './pages/productPage/newProductPage';
+import EditProductPage from './pages/productPage/editProductPage';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="categories" element={<CategoryPage />} />
         <Route path="products" element={<ProductPage />} />
         <Route path="new-product" element={<NewProductPage />} />
+        <Route path="edit-product/:id" element={<EditProductPage />} />
         <Route path="orders" element={<p>Orders</p>} />
         <Route path="users" element={<p>Users</p>} />
       </Route>
