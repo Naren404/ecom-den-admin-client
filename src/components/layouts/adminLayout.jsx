@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { Button, Card, Col, Container, Row, Stack } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import { BsBoxSeam, BsPerson, BsPersonCheck, BsCart, BsTag, BsTags } from "react-icons/bs";
 import SidebarItem from "../sidebarItem/sidebarItem";
+import { logoutUserAction } from "../../entities/user/userActions";
 
 const AdminLayout = () => {
   const [activeItem, setActiveItem] = useState("Dashboard")
 
   const { user } = useSelector(state => state.user)
-  const {firstName, lastName} = user || {}
+  const {firstName, lastName, email} = user || {}
+
+  const dispatch = useDispatch()
+  // LOGOUT FEATURE
+  const handleLogout = () => {
+    dispatch(logoutUserAction(email))
+  }
 
   return (
     <Container fluid>
@@ -74,6 +81,7 @@ const AdminLayout = () => {
               <Button 
                 variant="outline-danger" 
                 className="w-100"
+                onClick={handleLogout}
               >
                 Logout
               </Button>

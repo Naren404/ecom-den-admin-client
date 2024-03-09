@@ -52,3 +52,12 @@ export const getUser = () => {
     isPrivate: true,
   })
 }
+
+//LOGOUT USER
+export const logoutUser = (email, accessJWT) => {
+  return axiosApiCall({
+    method: 'post',
+    url: `${USER_API_URL}/logout`,
+    data: { email, accessJWT }
+  })
+}
