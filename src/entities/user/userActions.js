@@ -1,5 +1,5 @@
 import { toast } from "react-toastify"
-import { getNewAccessJwt, getUser } from "./userAxiosHelper"
+import { getNewAccessJwt, getUser, logoutUser } from "./userAxiosHelper"
 import { setUser } from "./userSlice"
 
 // GET USER ACTION
@@ -33,4 +33,23 @@ export const autoLoginAction = () => async(dispatch) => {
   }
 
   // we don't have both
+}
+
+// Logout User
+export const logoutUserAction = (email) => async(dispatch) => {
+  const accessJWT = sessionStorage.getItem("accessJWT")
+
+  // remove tokens from storage
+  sessionStorage.removeItem("accessJWT")
+  localStorage.removeItem("refreshJWT")
+
+  // clear state
+  dispatch(setUser({}))
+
+  // call api to delete session and update user's refesh token
+  const result = await logoutUser(email, accessJWT)
+
+  if(result?.status === "success"){
+    return toast.success(result.message)
+  }
 }
