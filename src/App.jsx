@@ -10,6 +10,7 @@ import AdminPrivateRoutes from './components/privateRouter/adminPrivateRouter';
 import AdminLayout from './components/layouts/adminLayout';
 import CategoryPage from './pages/categoryPage/categoryPage';
 import ProductPage from './pages/productPage/productPage';
+import NewProductPage from './pages/productPage/newProductPage';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="" element={<p>DashBoard</p>} />
         <Route path="categories" element={<CategoryPage />} />
         <Route path="products" element={<ProductPage />} />
+        <Route path="new-product" element={<NewProductPage />} />
         <Route path="orders" element={<p>Orders</p>} />
         <Route path="users" element={<p>Users</p>} />
       </Route>

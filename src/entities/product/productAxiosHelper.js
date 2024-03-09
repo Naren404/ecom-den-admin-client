@@ -10,3 +10,23 @@ export const getProducts = () => {
     url: PRODUCT_API_URL,
   })
 }
+
+// CREATE A PRODUCT
+export const createProduct = (productObj) => {
+  return axiosApiCall({
+    method: 'post',
+    url: PRODUCT_API_URL,
+    data: productObj,
+    isPrivate: true,
+  })
+}
+
+// UPDATE A PRODUCT
+export const updateProduct = (productObj) => {
+  return axiosApiCall({
+    method: 'patch',
+    url: PRODUCT_API_URL,
+    data: productObj,
+    isPrivate: true,
+  })
+}

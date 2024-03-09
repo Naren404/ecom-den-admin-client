@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProductsAction } from "../../entities/product/productActions";
 import ProductCard from "../../components/productCard/productCard";
+import { getCategoriesAction } from "../../entities/category/categoryActions";
 
 const ProductPage = () => {
   const { products } = useSelector(state => state.product)
@@ -12,6 +13,7 @@ const ProductPage = () => {
   useEffect(() => {
     // dispatch action to get all products
     dispatch(getProductsAction())
+    dispatch(getCategoriesAction())
   }, [dispatch])
   return ( 
     <>
