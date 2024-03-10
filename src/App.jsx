@@ -12,6 +12,7 @@ import CategoryPage from './pages/categoryPage/categoryPage';
 import ProductPage from './pages/productPage/productPage';
 import NewProductPage from './pages/productPage/newProductPage';
 import EditProductPage from './pages/productPage/editProductPage';
+import ResetPasswordPage from './pages/authPage/resetPasswordPage';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage /> } />
         <Route path="/verify-email" element={<VerifyEmailPage /> } />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
 
       {/* Private Routes */}
       <Route path='/admin' element={<AdminPrivateRoutes><AdminLayout /></AdminPrivateRoutes>}>
@@ -33,6 +35,8 @@ function App() {
         <Route path="orders" element={<p>Orders</p>} />
         <Route path="users" element={<p>Users</p>} />
       </Route>
+
+      <Route path='*' element={<h1>PAGE NOT FOUND!! GHAR JAAA!!</h1>} />
 
     </Routes>
       <ToastContainer />

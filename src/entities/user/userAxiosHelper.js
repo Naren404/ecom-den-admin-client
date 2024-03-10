@@ -61,3 +61,23 @@ export const logoutUser = (email, accessJWT) => {
     data: { email, accessJWT }
   })
 }
+
+// RESET PASSWORD FEATURE
+
+// SEND OTP
+export const requestOtp = (email) => {
+  return axiosApiCall({
+    method: 'post',
+    url: `${USER_API_URL}/request-otp`,
+    data: { email }
+  })
+}
+
+// RESET PASSWORD
+export const resetPassword = (resetPasswordObj) => {
+  return axiosApiCall({
+    method: 'patch',
+    url: `${USER_API_URL}/reset-password`,
+    data: resetPasswordObj
+  })
+}
