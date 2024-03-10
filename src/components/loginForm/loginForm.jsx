@@ -8,7 +8,7 @@ import { loginUser } from "../../entities/user/userAxiosHelper";
 import { toast } from "react-toastify";
 import { autoLoginAction, getUserAction } from "../../entities/user/userActions";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialFormData = {
   email: '',
@@ -80,7 +80,7 @@ const LoginForm = () => {
             { isCreating ? <Spinner animation="border" role="status" /> : "Login" }
           </Button>
 
-        <p className="pt-2">Forgot Password?</p>
+        <p className="pt-2">Forgot Password? <Link to="reset-password">Reset Password</Link></p>
       </Form>
     </Container>
    );
